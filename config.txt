@@ -1,0 +1,74 @@
+<?php
+class config {
+
+    public $configKeys;
+
+    // Constructor 
+    public function __construct($serverType){ 
+        $this->getKeys($serverType);
+    
+    }
+
+    public function getKeys($serverType){
+
+        if($serverType == "LIVE"){
+            
+            $this->configKeys = array(                
+                "sendEmailToAdmins_url"             => "https://inboundinsight.io/api/sendCSVUploadNotificationToAdmins"
+            );
+
+            $this->configKeys['SQLVMDBName']  =   'live-db';
+
+        }else{
+            
+            $this->configKeys = array(
+                "sendEmailToAdmins_url"             => "https://qainbound.azurewebsites.net/api/sendCSVUploadNotificationToAdmins"
+            );
+
+            $this->configKeys['SQLVMDBName']  =   'live-db';
+
+        }
+
+        // SQL VM SERVER DB INFO
+        //$this->configKeys['SQLVMServerIP']      =   '52.173.254.230';
+        $this->configKeys['SQLVMServerIP']      =   '127.0.0.1';
+	$this->configKeys['SQLVMServerName']    =   'sqlvm';
+        $this->configKeys['SQLVMInstanceName']  =   'MSSQLSERVER';
+        $this->configKeys['SQLVMUserName']      =   'SA';
+        $this->configKeys['SQLVMPassword']      =   'Villvay.com123';
+
+        //Infutor FTP Info
+        $this->configKeys['sftpServer']    =   '38.84.140.27';
+        $this->configKeys['sftpUsername']  =   'inb23977';
+        $this->configKeys['sftpPassword']  =   'Q2&@f2bkAn@p';
+        $this->configKeys['sftpPort']      =   22;        
+        $this->configKeys['sftpRemoteDirInbox']     = '/Demographic-Inbound/Inbox';
+        $this->configKeys['sftpRemoteDirOutbox']    = '/Demographic-Inbound/Outbox';
+        $this->configKeys['sftpRemoteDirIndividualInbox']   = '/Append and Validate Individual Only/inbox';
+        $this->configKeys['sftpRemoteDirIndividualOutbox']  = '/Append and Validate Individual Only/outbox';
+        $this->configKeys['sftpRemoteDirHouseholdInbox']    = '/Email ID Append/Append & Validate IND and HOUSE/inbox';
+        $this->configKeys['sftpRemoteDirHouseholdOutbox']   = '/Email ID Append/Append & Validate IND and HOUSE/outbox';
+	$this->configKeys['sftpRemoteDirREAOutbox']   = '/Reverse Email Append/outbox';
+        $this->configKeys['sftpRemoteDirREAInbox']   = '/Reverse Email Append/inbox';
+
+         //Epsilon FTP Info
+         $this->configKeys['EpsilonSFTPServer']    =   'sftp.epsilontargeting.com';
+         $this->configKeys['EpsilonSFTPUsername']  =   'inbound_insight_st';
+         $this->configKeys['EpsilonSFTPPassword']  =   'CcMe5K^.';
+         $this->configKeys['EpsilonSFTPPort']      =   22;     
+         $this->configKeys['EpsilonSFTPRemoteDirInbox']     = '/incoming';   
+         $this->configKeys['EpsilonSFTPRemoteDirOutbox']     = '/outgoing'; 
+
+         $this->configKeys['SftpHost']     = 'qa.upload.inboundinsight.io';
+         $this->configKeys['SftpUserName']     = 'deck';
+         $this->configKeys['SftpPassword']     = '$$deck@123'; 
+         $this->configKeys['SftpPort']      =   22; 
+ 	 $this->configKeys['SftpPath']     = '/www';
+    }
+    
+}
+
+
+?>
+       
+        
